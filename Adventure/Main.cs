@@ -14,12 +14,24 @@ namespace Adventure
 		
 		public static void Main(string[] args)
 		{
+            TCODConsole.setCustomFont("terminal.png", (int)TCODFontFlags.LayoutAsciiInColumn);
             TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
+            TCODConsole.root.print(0, 0, "test");
+ 
 
-			while (!TCODConsole.isWindowClosed())
+            bool run = !TCODConsole.isWindowClosed();
+			while (run)
 			{
 				TCODKey event_key = TCODConsole.checkForKeypress();
 				TCODMouseData event_mouse = TCODMouse.getStatus();
+
+
+                run = !TCODConsole.isWindowClosed();
+                //Untill we got different screens
+                if (event_key.KeyCode == TCODKeyCode.Escape)
+                {
+                    run = false;
+                }
 			}
 
 		}
