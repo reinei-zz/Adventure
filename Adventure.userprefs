@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Adventure/Main.cs">
+    <Files>
+      <File FileName="Adventure/Main.cs" Line="16" Column="4" />
+      <File FileName="Adventure/Entity.cs" Line="16" Column="31" />
+      <File FileName="Adventure/DamageTypes.cs" Line="48" Column="15" />
+      <File FileName="Adventure/MathHelper.cs" Line="19" Column="45" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
