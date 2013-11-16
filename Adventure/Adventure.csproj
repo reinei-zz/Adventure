@@ -30,10 +30,13 @@
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Adventure.MainClass</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="libtcod-net, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>dist\libtcod-net.dll</HintPath>
+      <HintPath>.\libtcod-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -50,10 +53,14 @@
     <Content Include="libtcod-net-unmanaged.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="libtcod-net.dll" />
     <Content Include="libtcod-VS.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SDL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="terminal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ZLIB-LICENSE.txt" />

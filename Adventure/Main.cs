@@ -1,4 +1,5 @@
 using System;
+using libtcod;
 
 namespace Adventure
 {
@@ -11,10 +12,16 @@ namespace Adventure
 			System.Threading.Thread.Sleep((int)(dur * 1000));
 		}
 		
-		public static void Main (string[] args)
+		public static void Main(string[] args)
 		{
-            libtcod.TCODConsole.initRoot(30, 30, "test");
-            sleep(10.0f);
+            TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
+
+			while (!TCODConsole.isWindowClosed())
+			{
+				TCODKey event_key = TCODConsole.checkForKeypress();
+				TCODMouseData event_mouse = TCODMouse.getStatus();
+			}
+
 		}
 		
 		//Easteregg!
