@@ -15,6 +15,7 @@ namespace Adventure
 		public static void Main(string[] args)
 		{
             TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
+			TCODConsole.credits();
 
 			while (!TCODConsole.isWindowClosed())
 			{
