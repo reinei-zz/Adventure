@@ -15,7 +15,7 @@ namespace Adventure
 			return this.Current.Pause;
 		}
 
-		public void Setup()
+		public void Init()
 		{
 			Console = TCODConsole.root;
 			Current = null;
@@ -30,15 +30,13 @@ namespace Adventure
 
 		public void Draw()
 		{
-			GameLoop.Console.setForegroundColor(TCODColor.green);
-			GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
-			GameLoop.Console.clear();
-			this.Current.Render();
+			this.Current.Draw();
 		}
 		
 		public void SetScreen(Screen s)
 		{
 			this.Current = s;
+
 		}
 	}
 
@@ -46,7 +44,7 @@ namespace Adventure
 	{
 		public static MainMenu Main { get; private set; }
 
-		public static void Setup()
+		public static void Init()
 		{
 			Main = new MainMenu();
 

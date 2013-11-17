@@ -14,10 +14,13 @@ namespace Adventure
 			this.Pause = true;
 		}
 
-		public override void Render()
+		public override void Draw()
 		{
-			//GameLoop.console.print(0, 0, "hello world!");
-			Start.Render();
+			GameLoop.Console.setForegroundColor(TCODColor.green);
+			GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
+			TCODConsole.root.clear();
+
+			Start.Draw();
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)

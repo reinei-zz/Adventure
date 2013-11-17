@@ -16,7 +16,7 @@ namespace Adventure
 		}
 
 		//this is ONLY supposed to hadle rendering
-		public abstract void Render();
+		public abstract void Draw();
 
 		public abstract void Update(TCODKey k, TCODMouseData m);
 
@@ -43,7 +43,7 @@ namespace Adventure
 			{
 			}
 
-			public void Render()
+			public void Draw()
 			{
 				GameLoop.Console.print(X, Y, Text);
 			}
