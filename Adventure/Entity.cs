@@ -6,21 +6,21 @@ namespace Adventure
 	{
 		public int Health {	get; private set; }
 		
-		protected float[] resistances {get; private set;}
-		protected byte[] blocks {get; private set;}
+		protected float[] Resistances {get; private set;}
+		protected byte[] Blocks {get; private set;}
 		
 		protected Entity(int health)
 		{
 			this.Health = health;
-			this.resistances = new float[32];
-			this.blocks = new byte[32];
+			this.Resistances = new float[32];
+			this.Blocks = new byte[32];
 		}
 		
-		public bool damage(int amount, DamageType d)
+		public bool Damage(int amount, DamageType d)
 		{
-			if (!MathHelper.blocks(amount, d, this.blocks))
+			if (!MathHelper.blocks(amount, d, this.Blocks))
 			{
-				amount = MathHelper.damageAfterResistance(amount, d, resistances);
+				amount = MathHelper.damageAfterResistance(amount, d, Resistances);
 				
 				this.Health -= amount;
 				if (this.Health <= 0)

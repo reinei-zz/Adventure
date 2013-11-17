@@ -7,7 +7,7 @@ namespace Adventure
 	{
 		
 		//dur is in seconds!
-		public static void Sleep(float dur)
+		public static void sleep(float dur)
 		{
 			System.Threading.Thread.Sleep((int)(dur * 1000));
 		}
@@ -15,25 +15,16 @@ namespace Adventure
 		public static void Main(string[] args)
 		{
             TCODConsole.setCustomFont("terminal.png", (int)TCODFontFlags.LayoutAsciiInColumn);
-            TCODConsole.initRoot(51, 51, "test", false, TCODRendererType.SDL);
-            
-			TCODConsole.credits();
-            TCODConsole.root.clear();
-            GameLoop.Game.Setup();
-            Screens.Setup();
-
-            TCODConsole.root.setBackgroundColor(TCODColor.black);
+            TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
+            TCODConsole.root.print(0, 0, "test");
+ 
 
             bool run = !TCODConsole.isWindowClosed();
 			while (run)
 			{
-                TCODConsole.root.clear();
 				TCODKey event_key = TCODConsole.checkForKeypress();
 				TCODMouseData event_mouse = TCODMouse.getStatus();
 
-                GameLoop.Game.Cycle(event_key, event_mouse);
-
-                TCODConsole.flush();
 
                 run = !TCODConsole.isWindowClosed();
                 //Untill we got different screens
