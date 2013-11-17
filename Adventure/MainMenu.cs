@@ -14,7 +14,7 @@ namespace Adventure
 			Start = new Button("start", HalfW - 2, HalfH + 1, Startup);
 		}
 
-		public override void Render(TCODKey k, TCODMouseData m)
+		public override void Render()
 		{
 			//GameLoop.console.print(0, 0, "hello world!");
 			Start.Render();

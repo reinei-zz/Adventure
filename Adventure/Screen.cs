@@ -14,7 +14,7 @@ namespace Adventure
 		}
 
 		//this is ONLY supposed to hadle rendering
-		public abstract void Render(TCODKey k, TCODMouseData m);
+		public abstract void Render();
 
 		public abstract void Handle(TCODKey k, TCODMouseData m);
 
@@ -43,6 +43,9 @@ namespace Adventure
 
 			public void Render()
 			{
+				TCODConsole.root.setForegroundColor(TCODColor.green);
+				TCODConsole.root.setBackgroundColor(TCODColor.darkGrey);
+				TCODConsole.root.clear();
 				GameLoop.Console.print(X, Y, Text);
 			}
 

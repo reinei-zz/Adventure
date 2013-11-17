@@ -16,12 +16,16 @@ namespace Adventure
 			Current = null;
 		}
 
-		public void Cycle(TCODKey k, TCODMouseData m)
+		public void Update(TCODKey k, TCODMouseData m)
 		{
-			this.Current.Render(k, m);
 			this.Current.Handle(k, m);
 		}
 
+		public void Draw()
+		{
+			this.Current.Render();
+		}
+		
 		public void SetScreen(Screen s)
 		{
 			this.Current = s;

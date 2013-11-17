@@ -19,29 +19,28 @@ namespace Adventure
 			TCODConsole.credits();
 #endif
 
+			//Prepare
 			TCODConsole.root.clear();
 			GameLoop.Game.Setup();
 			Screens.Setup();
 
-			TCODConsole.root.setBackgroundColor(TCODColor.black);
-
 			bool run = !TCODConsole.isWindowClosed();
 			while (run)
 			{
-				TCODConsole.root.clear();
+				//Events
 				TCODKey event_key = TCODConsole.checkForKeypress();
 				TCODMouseData event_mouse = TCODMouse.getStatus();
 
-				GameLoop.Game.Cycle(event_key, event_mouse);
+				//Update & Draw
+				GameLoop.Game.Draw();
+				GameLoop.Game.Update(event_key, event_mouse);
 
+				//Finish
 				TCODConsole.flush();
-
+				
+				//Should exit?
 				run = !TCODConsole.isWindowClosed();
-				//Untill we got different screens
-				if (event_key.KeyCode == TCODKeyCode.Escape)
-				{
-					run = false;
-				}
+				run = run && !(event_key.KeyCode == TCODKeyCode.Escape);
 			}
 		}
 
