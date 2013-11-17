@@ -5,9 +5,11 @@ namespace Adventure
 {
 	public class WorldScreen : Screen
 	{
+		internal Menu m;
+
 		public WorldScreen() : base()
 		{
-
+			m = new Menu();
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)
@@ -57,7 +59,7 @@ namespace Adventure
             GameLoop.Console.putChar(halfw, halfh, 2);
             GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			GameLoop.Console.print(halfw, this.Height - 5, PlayerPos.ToString());
+			m.Draw(PlayerPos);
 		}
 	}
 }
