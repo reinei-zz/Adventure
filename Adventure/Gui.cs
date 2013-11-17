@@ -1,5 +1,4 @@
-﻿using System;
-using libtcod;
+﻿using libtcod;
 
 namespace Adventure
 {
@@ -19,16 +18,19 @@ namespace Adventure
 			this.H = h;
 		}
 
-		public bool Intersects(TCODMouseData m)
+		public bool Intersects(Position p)
 		{
-			if ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H))
-				return true;
-			return false;
+			return ((p.x >= X && p.x <= X + W) && (p.y >= Y && p.y < Y + H));
 		}
 
 		public bool Intersects(Rect r)
 		{
 			return ((((r.X < (this.X + this.W)) && (this.X < (r.X + r.W))) && (r.Y < (this.Y + this.H))) && (this.Y < (r.Y + r.H)));
+		}
+
+		public bool Intersects(TCODMouseData m)
+		{
+			return ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H));
 		}
 	}
 }
