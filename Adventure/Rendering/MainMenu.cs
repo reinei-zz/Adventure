@@ -6,8 +6,7 @@ namespace Adventure
 	{
 		internal Button Start;
 
-		public MainMenu()
-			: base()
+		public MainMenu() : base()
 		{
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
