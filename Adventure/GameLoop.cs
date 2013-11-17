@@ -9,6 +9,7 @@ namespace Adventure
 		public static TCODConsole Console { get; private set; }
 		internal World world { get; private set; }
 
+		public bool Run = true;
 		private Screen Current;
 
 		public void Init()
@@ -23,6 +24,10 @@ namespace Adventure
 			this.Current.Update(k, m);
 
 			//GameLogic stuff here
+
+			//Should exit?
+			this.Run = this.Run && !TCODConsole.isWindowClosed();
+			this.Run = this.Run && !(k.KeyCode == TCODKeyCode.Escape);
 		}
 
 		public void Draw()
@@ -33,6 +38,11 @@ namespace Adventure
 		public void SetScreen(Screen s)
 		{
 			this.Current = s;
+		}
+
+		public void Exit()
+		{
+			this.Run = false;
 		}
 	}
 

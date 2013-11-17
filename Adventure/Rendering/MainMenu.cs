@@ -15,7 +15,7 @@ namespace Adventure
 
 			Buttons.Add(new Button("Start", HalfW, HalfH - 1, TCODColor.white, TCODColor.darkGrey, true, Startup));
 			Buttons.Add(new Button("Credits", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, true, null));
-			Buttons.Add(new Button("Exit :(", HalfW, HalfH + 3, TCODColor.white, TCODColor.darkGrey, true, null));
+			Buttons.Add(new Button("Exit :(", HalfW, HalfH + 3, TCODColor.red, TCODColor.darkGrey, true, Exit));
 		}
 
 		public override void Draw()
@@ -41,6 +41,11 @@ namespace Adventure
 		public void Startup()
 		{
 			GameLoop.Game.SetScreen(Screens.WorldScreen);
+		}
+
+		public void Exit()
+		{
+			GameLoop.Game.Exit();
 		}
 	}
 }

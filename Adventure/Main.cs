@@ -24,9 +24,8 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
-			bool run = !TCODConsole.isWindowClosed();
 			bool firstrun = true;
-			while (run)
+			while (GameLoop.Game.Run)
 			{
 				//Events
 				TCODKey event_key = TCODConsole.checkForKeypress();
@@ -38,11 +37,7 @@ namespace Adventure
 
 				//Finish
 				TCODConsole.flush();
-
-				run = !TCODConsole.isWindowClosed();
-				run = run && !(event_key.KeyCode == TCODKeyCode.Escape);
-
-
+				
 #if DEBUG
 				//Do special debug stuff here
 				if (firstrun)
