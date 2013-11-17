@@ -39,10 +39,24 @@ namespace Adventure
 				TCODConsole.flush();
 				
 				//Should exit?
+				if (!GameLoop.Game.ShouldPause())
+				{
+					while (TCODConsole.checkForKeypress().KeyCode != TCODKeyCode.Space && !TCODConsole.isWindowClosed())
+					{
+						Sleep(0.01f);
+					}
+				}
+
 				run = !TCODConsole.isWindowClosed();
 				run = run && !(event_key.KeyCode == TCODKeyCode.Escape);
 			}
 		}
+
+
+		/*while (TCODConsole.checkForKeypress().KeyCode != TCODKeyCode.Space && !TCODConsole.isWindowClosed())
+				{
+					Sleep(0.01f);
+				}*/
 
 		//Easteregg!
 		/*

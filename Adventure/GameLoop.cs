@@ -10,6 +10,11 @@ namespace Adventure
 
 		private Screen Current;
 
+		public bool ShouldPause()
+		{
+			return this.Current.Pause;
+		}
+
 		public void Setup()
 		{
 			Console = TCODConsole.root;
@@ -19,6 +24,8 @@ namespace Adventure
 		public void Update(TCODKey k, TCODMouseData m)
 		{
 			this.Current.Handle(k, m);
+
+			//GameLogic stuff here
 		}
 
 		public void Draw()
