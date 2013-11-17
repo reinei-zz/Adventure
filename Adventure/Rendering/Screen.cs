@@ -45,9 +45,9 @@ namespace Adventure
 
 			public void Render()
 			{
-				TCODConsole.root.setForegroundColor(TCODColor.green);
-				TCODConsole.root.setBackgroundColor(TCODColor.darkGrey);
-				TCODConsole.root.clear();
+				GameLoop.Console.setForegroundColor(TCODColor.green);
+				GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
+				//TCODConsole.root.clear();
 				GameLoop.Console.print(X, Y, Text);
 			}
 
