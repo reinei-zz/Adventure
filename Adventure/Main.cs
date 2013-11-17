@@ -24,10 +24,6 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
-#if DEBUG
-			GameLoop.Game.SetScreen(Screens.WorldScreen);
-#endif
-
 			bool run = !TCODConsole.isWindowClosed();
 
 #if DEBUG

@@ -1,16 +1,21 @@
-﻿using libtcod;
+﻿using System.Collections.Generic;
+using libtcod;
 
 namespace Adventure
 {
 	public class MainMenu : Screen
 	{
-		internal Button Start;
+		internal List<Button> Buttons = new List<Button>();
 
-		public MainMenu() : base()
+		public MainMenu()
+			: base()
 		{
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
-			Start = new Button("start", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, TCODAlignment.CenterAlignment, Startup);
+
+			Buttons.Add(new Button("Start", HalfW, HalfH - 1, TCODColor.white, TCODColor.darkGrey, true, Startup));
+			Buttons.Add(new Button("Credits", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, true, null));
+			Buttons.Add(new Button("Exit :(", HalfW, HalfH + 3, TCODColor.white, TCODColor.darkGrey, true, null));
 		}
 
 		public override void Draw()
@@ -19,17 +24,23 @@ namespace Adventure
 			GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
 			TCODConsole.root.clear();
 
-			Start.Draw();
+			foreach (Button b in Buttons)
+			{
+				b.Draw();
+			}
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)
 		{
-			Start.Update(m);
+			foreach (Button b in Buttons)
+			{
+				b.Update(m);
+			}
 		}
 
 		public void Startup()
 		{
-			GameLoop.Console.print((int)(this.Width / 2) - 2, (int)(this.Height / 2), "Starting...");
+			GameLoop.Game.SetScreen(Screens.WorldScreen);
 		}
 	}
 }
