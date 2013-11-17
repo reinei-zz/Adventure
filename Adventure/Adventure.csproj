@@ -41,6 +41,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rendering\Gpi.cs" />
     <Compile Include="Entitys\Player.cs" />
     <Compile Include="Entitys\Walkable.cs" />
     <Compile Include="Gui.cs" />
