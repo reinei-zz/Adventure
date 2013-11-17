@@ -35,7 +35,7 @@ namespace Adventure
 			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
 			Chunk c = GetChunk(chunkpos);
 			c.Idle = 0;
-			c.Tiles[pos.x - chunkpos.x, pos.y - chunkpos.y, pos.z - chunkpos.z] = tile;
+			c.Tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)] = tile;
 		}
 
 		public Tile GetTile(Position pos)
@@ -43,7 +43,7 @@ namespace Adventure
 			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
 			Chunk c = GetChunk(chunkpos);
 			c.Idle = 0;
-			return c.Tiles[pos.x - chunkpos.x, pos.y - chunkpos.y, pos.z - chunkpos.z];
+			return c.Tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)];
 		}
 
 		public Chunk GetChunk(Position chunkpos)
