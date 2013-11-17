@@ -25,16 +25,16 @@ namespace Adventure
 			public delegate void Action();
 
 			protected string Text;
-			protected int X, Y, W, H;
+			protected Rect r;
+			protected int X, Y;
 			protected Action A;
 
 			public Button(string s, int x, int y, int w, int h, Action a)
 			{
 				this.Text = s;
+				r = new Rect(x, y, w, h);
 				this.X = x;
 				this.Y = y;
-				this.W = w;
-				this.H = h;
 				this.A = a;
 			}
 
@@ -50,7 +50,7 @@ namespace Adventure
 
 			public void Press(TCODMouseData m)
 			{
-				if ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H) && m.LeftButton)
+				if (r.Intersects(m) && m.LeftButton)
 				{
 					A();
 				}
