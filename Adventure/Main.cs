@@ -52,7 +52,7 @@ namespace Adventure
 				if (firstrun)
 				{
 					firstrun = false;
-					GameLoop.Game.world.SetTile(new Position(100, 100, 5), new Tile("TESTStone", 'O'));
+					GameLoop.Game.world.SetTile(new Position(100, 5, 100), new Tile("TESTStone", 'O'));
 				}
 #endif
 			}

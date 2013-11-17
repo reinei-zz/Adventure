@@ -1,8 +1,10 @@
 ﻿using libtcod;
 
+//GPI stands for: General Programming Interface
+
 namespace Adventure
 {
-	//class Gui
+	//class Gpi
 	//{
 	//}
 

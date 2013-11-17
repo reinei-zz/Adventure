@@ -22,15 +22,15 @@ namespace Adventure
 			}
 			if (k.Character == 'w')
 			{
-				PlayerPos = PlayerPos.translate(0, -1, 0);
+				PlayerPos = PlayerPos.translate(0, 0, -1);
 			}
 			if (k.Character == 's')
 			{
-				PlayerPos = PlayerPos.translate(0, 1, 0);
+				PlayerPos = PlayerPos.translate(0, 0, 1);
 			}
 		}
 
-		private Position PlayerPos = new Position(100, 100, 5);
+		private Position PlayerPos = new Position(100, 5, 100);
 
 		public override void Draw()
 		{
@@ -46,13 +46,17 @@ namespace Adventure
 			{
 				for (int y = -halfh; y <= halfh - 5; y++)
 				{
-					Position p = PlayerPos.translate(x, y, 0);
+					Position p = PlayerPos.translate(x, 0, y);
 					Tile t = GameLoop.Game.world.GetTile(p);
 					int ScreenX = halfw + x;
 					int ScreenY = halfh + y;
 					GameLoop.Console.print(ScreenX, ScreenY, t.Visual.ToString());
 				}
 			}
+            GameLoop.Console.setForegroundColor(TCODColor.darkerLime);
+            GameLoop.Console.putChar(halfw, halfh, 2);
+            GameLoop.Console.setForegroundColor(TCODColor.white);
+
 			GameLoop.Console.print(halfw, this.Height - 5, PlayerPos.ToString());
 		}
 	}
