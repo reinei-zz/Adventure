@@ -41,6 +41,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Screens\Credits.cs" />
     <Compile Include="Rendering\Gpi.cs" />
     <Compile Include="Entitys\Player.cs" />
     <Compile Include="Entitys\Walkable.cs" />
@@ -48,13 +49,13 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Entitys\Entity.cs" />
     <Compile Include="DamageTypes.cs" />
-    <Compile Include="Rendering\MainMenu.cs" />
+    <Compile Include="Screens\Menu.cs" />
     <Compile Include="Utils\Direction.cs" />
     <Compile Include="Utils\MathHelper.cs" />
     <Compile Include="GameLoop.cs" />
     <Compile Include="Rendering\Screen.cs" />
     <Compile Include="Utils\Position.cs" />
-    <Compile Include="Rendering\WorldScreen.cs" />
+    <Compile Include="Screens\World.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldGen.cs" />

@@ -48,15 +48,17 @@ namespace Adventure
 
 	public class Screens
 	{
-		public static MainMenu MainMenu { get; private set; }
-		public static WorldScreen WorldScreen { get; private set;}
+		public static Screen_Menu Menu { get; private set; }
+		public static Screen_World World { get; private set;}
+		public static Screen_Credits Credits { get; private set; }
 
 		public static void Init()
 		{
-			MainMenu = new MainMenu();
-			WorldScreen = new WorldScreen();
+			Menu = new Screen_Menu();
+			World = new Screen_World();
+			Credits = new Screen_Credits();
 
-			GameLoop.Game.SetScreen(MainMenu);
+			GameLoop.Game.SetScreen(Menu);
 		}
 	}
 }

@@ -3,18 +3,18 @@ using libtcod;
 
 namespace Adventure
 {
-	public class MainMenu : Screen
+	public class Screen_Menu : Screen
 	{
 		internal List<Button> Buttons = new List<Button>();
 
-		public MainMenu()
+		public Screen_Menu()
 			: base()
 		{
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
 
-			Buttons.Add(new Button("Start", HalfW, HalfH - 1, TCODColor.white, TCODColor.darkGrey, true, Startup));
-			Buttons.Add(new Button("Credits", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, true, null));
+			Buttons.Add(new Button("Start", HalfW, HalfH - 1, TCODColor.white, TCODColor.darkGrey, true, Start));
+			Buttons.Add(new Button("Credits", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, true, Credits));
 			Buttons.Add(new Button("Exit :(", HalfW, HalfH + 3, TCODColor.red, TCODColor.darkGrey, true, Exit));
 		}
 
@@ -38,12 +38,17 @@ namespace Adventure
 			}
 		}
 
-		public void Startup()
+		private void Start()
 		{
-			GameLoop.Game.SetScreen(Screens.WorldScreen);
+			GameLoop.Game.SetScreen(Screens.World);
 		}
 
-		public void Exit()
+		private void Credits()
+		{
+			GameLoop.Game.SetScreen(Screens.Credits);
+		}
+
+		private void Exit()
 		{
 			GameLoop.Game.Exit();
 		}

@@ -3,11 +3,11 @@ using libtcod;
 
 namespace Adventure
 {
-	public class WorldScreen : Screen
+	public class Screen_World : Screen
 	{
 		internal Menu m;
 
-		public WorldScreen() : base()
+		public Screen_World() : base()
 		{
 			m = new Menu();
 		}
