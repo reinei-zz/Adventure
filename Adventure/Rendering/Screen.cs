@@ -6,13 +6,11 @@ namespace Adventure
 	public abstract class Screen
 	{
 		protected int Width, Height;
-		public bool Pause { get; protected set; }
 
 		public Screen()
 		{
 			this.Width = GameLoop.Console.getWidth();
 			this.Height = GameLoop.Console.getHeight();
-			this.Pause = false;
 		}
 
 		//this is ONLY supposed to hadle rendering

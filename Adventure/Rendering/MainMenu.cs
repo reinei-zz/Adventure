@@ -11,7 +11,6 @@ namespace Adventure
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
 			Start = new Button("start", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, TCODAlignment.CenterAlignment, Startup);
-			this.Pause = true;
 		}
 
 		public override void Draw()
