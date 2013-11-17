@@ -15,7 +15,7 @@ namespace Adventure
 			return this.Current.Pause;
 		}
 
-		public void Setup()
+		public void Init()
 		{
 			Console = TCODConsole.root;
 			Current = null;
@@ -23,19 +23,20 @@ namespace Adventure
 
 		public void Update(TCODKey k, TCODMouseData m)
 		{
-			this.Current.Handle(k, m);
+			this.Current.Update(k, m);
 
 			//GameLogic stuff here
 		}
 
 		public void Draw()
 		{
-			this.Current.Render();
+			this.Current.Draw();
 		}
 		
 		public void SetScreen(Screen s)
 		{
 			this.Current = s;
+
 		}
 	}
 
@@ -43,7 +44,7 @@ namespace Adventure
 	{
 		public static MainMenu Main { get; private set; }
 
-		public static void Setup()
+		public static void Init()
 		{
 			Main = new MainMenu();
 

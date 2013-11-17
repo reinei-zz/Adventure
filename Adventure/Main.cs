@@ -21,8 +21,8 @@ namespace Adventure
 
 			//Prepare
 			TCODConsole.root.clear();
-			GameLoop.Game.Setup();
-			Screens.Setup();
+			GameLoop.Game.Init();
+			Screens.Init();
 
 			bool run = !TCODConsole.isWindowClosed();
 			while (run)
