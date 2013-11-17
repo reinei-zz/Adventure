@@ -2,7 +2,7 @@
 
 namespace Adventure
 {
-	internal struct Position
+	public struct Position
 	{
 		public long x, y, z;
 
