@@ -1,14 +1,15 @@
-namespace Adventure
+namespace Adventure.Entitys
 {
 	public abstract class Entity
 	{
-		public int Health { get; private set; }
+		public Position Pos;
+		public double Health;
 
 		protected float[] Resistances { get; private set; }
 
 		protected byte[] Blocks { get; private set; }
 
-		protected Entity(int health)
+		protected Entity(double health = 1)
 		{
 			this.Health = health;
 			this.Resistances = new float[32];
