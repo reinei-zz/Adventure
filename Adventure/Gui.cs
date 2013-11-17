@@ -1,5 +1,4 @@
-﻿using System;
-using libtcod;
+﻿using libtcod;
 
 namespace Adventure
 {
@@ -9,9 +8,9 @@ namespace Adventure
 
 	public class Rect
 	{
-		private int X, Y, W, H;
+		private long X, Y, W, H;
 
-		public Rect(int x, int y, int w, int h)
+		public Rect(long x, long y, long w, long h)
 		{
 			this.X = x;
 			this.Y = y;
@@ -19,22 +18,19 @@ namespace Adventure
 			this.H = h;
 		}
 
-		public bool Intersects(TCODMouseData m)
+		public bool Intersects(Position p)
 		{
-			if ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H))
-				return true;
-			return false;
+			return ((p.x >= X && p.x <= X + W) && (p.y >= Y && p.y < Y + H));
 		}
 
 		public bool Intersects(Rect r)
 		{
-			if ((this.X == r.X) && (this.Y == r.Y))
-				return true;
-			if ((((this.X + this.W) >= r.X) && (this.X <= r.X)) && (((this.Y + this.H) >= r.Y) && (this.Y <= r.Y)))
-				return true;
-			if ((((r.X + r.W) >= this.X) && (r.X <= this.X)) && (((r.Y + r.H) >= this.Y) && (r.Y <= this.Y)))
-				return true;
-			return false;
+			return ((((r.X < (this.X + this.W)) && (this.X < (r.X + r.W))) && (r.Y < (this.Y + this.H))) && (this.Y < (r.Y + r.H)));
+		}
+
+		public bool Intersects(TCODMouseData m)
+		{
+			return ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H));
 		}
 	}
 }

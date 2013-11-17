@@ -12,7 +12,7 @@
 				{
 					for (short z = 0; z < Chunk.Size; z++)
 					{
-						c.tiles[x, y, z] = new Tile("stone", '#');
+						c.Tiles[x, y, z] = new Tile("stone", '#');
 					}
 				}
 			}
