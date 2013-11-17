@@ -41,12 +41,15 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\Player.cs" />
+    <Compile Include="Entitys\Walkable.cs" />
     <Compile Include="Gui.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="Entitys\Entity.cs" />
     <Compile Include="DamageTypes.cs" />
     <Compile Include="Rendering\MainMenu.cs" />
+    <Compile Include="Utils\Direction.cs" />
     <Compile Include="Utils\MathHelper.cs" />
     <Compile Include="GameLoop.cs" />
     <Compile Include="Rendering\Screen.cs" />
