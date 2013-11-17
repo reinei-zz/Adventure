@@ -14,9 +14,11 @@ namespace Adventure
 		
 		public static void Main(string[] args)
 		{
-            TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
-			TCODConsole.credits();
 
+            TCODConsole.initRoot(50, 50, "test", false, TCODRendererType.SDL);
+#if !DEBUG
+			TCODConsole.credits();
+#endif
 			while (!TCODConsole.isWindowClosed())
 			{
 				TCODKey event_key = TCODConsole.checkForKeypress();
