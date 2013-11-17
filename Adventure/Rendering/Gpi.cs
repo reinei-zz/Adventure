@@ -8,6 +8,12 @@ namespace Adventure
 	//{
 	//}
 
+    public class Menu
+    {
+        internal int HBorder = 12*15 + 13;
+		internal int VBorder = 0;
+     }
+
 	public class Rect
 	{
 		private long X, Y, W, H;
