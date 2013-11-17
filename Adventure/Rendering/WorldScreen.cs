@@ -16,7 +16,7 @@ namespace Adventure.Rendering
 			
 		}
 
-		public override void Render()
+		public override void Draw()
 		{
 			
 		}
