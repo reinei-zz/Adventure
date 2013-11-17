@@ -1,4 +1,5 @@
-﻿using libtcod;
+﻿using System;
+using libtcod;
 
 namespace Adventure
 {
@@ -25,26 +26,24 @@ namespace Adventure
 			protected string Text;
 			protected Rect r;
 			protected TCODColor fcol;
-			protected int X, Y;
 			protected TCODColor bcol;
-			protected TCODAlignment align;
 			protected Action A;
 			protected bool hover;
 
-			public Button(string s, int x, int y, int w, int h, TCODColor fcol, TCODColor bcol, TCODAlignment align, Action a)
+			public Button(string s, int x, int y, int w, int h, TCODColor fcol, TCODColor bcol, bool center, Action a)
 			{
 				this.Text = s;
-				r = new Rect(x, y, w, h);
-				this.X = x;
-				this.Y = y;
+				if (center)
+					r = new Rect(x - w / 2, y, w, h);
+				else
+					r = new Rect(x, y, w, h);
 				this.fcol = fcol;
 				this.bcol = bcol;
-				this.align = align;
 				this.A = a;
 			}
 
-			public Button(string s, int x, int y, TCODColor fcol, TCODColor bcol, TCODAlignment align, Action a)
-				: this(s, x, y, s.Length, 1, fcol, bcol, align, a)
+			public Button(string s, int x, int y, TCODColor fcol, TCODColor bcol, bool center, Action a)
+				: this(s, x, y, s.Length - 1, 1, fcol, bcol, center, a)
 			{
 			}
 
@@ -65,14 +64,14 @@ namespace Adventure
 				}
 				
 				//Draw
-				GameLoop.Console.printEx(X, Y, TCODBackgroundFlag.Set, align, Text);
+				GameLoop.Console.printEx((int)r.X, (int)r.Y, TCODBackgroundFlag.Set, TCODAlignment.LeftAlignment, Text);
 			}
 
 			public void Update(TCODMouseData m)
 			{
 				bool intersects = r.Intersects(m);
 				hover = intersects;
-				if (intersects && m.LeftButton)
+				if (intersects && m.LeftButton && A != null)
 				{
 					A();
 				}

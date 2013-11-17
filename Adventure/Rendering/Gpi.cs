@@ -10,7 +10,7 @@ namespace Adventure
 
 	public class Rect
 	{
-		private long X, Y, W, H;
+		public long X, Y, W, H;
 
 		public Rect(long x, long y, long w, long h)
 		{
