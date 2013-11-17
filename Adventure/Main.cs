@@ -13,6 +13,7 @@ namespace Adventure
 		public static void Main(string[] args)
 		{
 			TCODConsole.setCustomFont("terminal.png", (int)TCODFontFlags.LayoutAsciiInColumn);
+			TCODConsole.setKeyboardRepeat(500, 100);
 			TCODConsole.initRoot(51, 51, "test", false, TCODRendererType.SDL);
 
 #if !DEBUG
@@ -24,11 +25,15 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
+
+#if DEBUG
 			bool firstrun = true;
+#endif
 			while (GameLoop.Game.Run)
+
 			{
 				//Events
-				TCODKey event_key = TCODConsole.checkForKeypress();
+				TCODKey event_key = TCODConsole.checkForKeypress((int)TCODKeyStatus.KeyPressed);
 				TCODMouseData event_mouse = TCODMouse.getStatus();
 
 				//Update & Draw

@@ -18,6 +18,9 @@ namespace Adventure
 		{
 			int width = GameLoop.Console.getWidth();
 			int height = GameLoop.Console.getHeight();
+			string s = playerPos.ToString();
+
+			GameLoop.Console.rect(0, height - 5, width, 4, true);
 
 			GameLoop.Console.setForegroundColor(TCODColor.lightGrey);
 			for (int x = 1; x < width - 1 ; x++)
@@ -44,10 +47,19 @@ namespace Adventure
 			GameLoop.Console.putChar(0, height - 1, BaseChar + 16);
 			GameLoop.Console.putChar(0, height - 5, BaseChar + 17);
 
+			GameLoop.Console.putChar(width - 15, height - 5, HBorder - 2);
+			GameLoop.Console.putChar(width - 15, height - 4, VBorder);
+			GameLoop.Console.putChar(width - 15, height - 3, HBorder - 1);
+			for (int x = width - 14; x < width - 1; x++)
+			{
+				GameLoop.Console.putChar(x, height - 3, HBorder);
+			}
+			GameLoop.Console.putChar(width - 1, height - 3, VBorder - 1);
+
+
 			//Border finished
 			GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			string s = playerPos.ToString();
 			GameLoop.Console.print(width - s.Length - 1, height - 4, s);
 		}
      }
