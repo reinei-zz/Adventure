@@ -12,6 +12,7 @@ namespace Adventure
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
 			Start = new Button("start", HalfW - 2, HalfH + 1, Startup);
+			this.Pause = true;
 		}
 
 		public override void Render(TCODKey k, TCODMouseData m)

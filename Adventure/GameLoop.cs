@@ -10,6 +10,11 @@ namespace Adventure
 
 		private Screen Current;
 
+		public bool ShouldPause()
+		{
+			return this.Current.Pause;
+		}
+
 		public void Setup()
 		{
 			Console = TCODConsole.root;
@@ -20,6 +25,8 @@ namespace Adventure
 		{
 			this.Current.Render(k, m);
 			this.Current.Handle(k, m);
+
+			//GameLogic stuff here
 		}
 
 		public void SetScreen(Screen s)
