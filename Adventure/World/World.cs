@@ -9,13 +9,13 @@ namespace Adventure
 		public void SetTile(Position pos, Tile tile)
 		{
 			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
-			GetChunk(chunkpos).tiles[pos.x - chunkpos.x, pos.y - chunkpos.y, pos.z - chunkpos.z] = tile;
+			GetChunk(chunkpos).tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)] = tile;
 		}
 
 		public Tile GetTile(Position pos)
 		{
 			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
-			return GetChunk(chunkpos).tiles[pos.x - chunkpos.x, pos.y - chunkpos.y, pos.z - chunkpos.z];
+			return GetChunk(chunkpos).tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)];
 		}
 
 		public Chunk GetChunk(Position chunkpos)

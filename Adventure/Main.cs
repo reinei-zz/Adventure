@@ -24,7 +24,12 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
+#if DEBUG
+			GameLoop.Game.SetScreen(Screens.WorldScreen);
+#endif
+
 			bool run = !TCODConsole.isWindowClosed();
+			bool firstrun = true;
 			while (run)
 			{
 				//Events
@@ -37,18 +42,19 @@ namespace Adventure
 
 				//Finish
 				TCODConsole.flush();
-				
-				//Should exit?
-				if (!GameLoop.Game.ShouldPause())
-				{
-					while (TCODConsole.checkForKeypress().KeyCode != TCODKeyCode.Space && !TCODConsole.isWindowClosed())
-					{
-						Sleep(0.01f);
-					}
-				}
 
 				run = !TCODConsole.isWindowClosed();
 				run = run && !(event_key.KeyCode == TCODKeyCode.Escape);
+
+
+#if DEBUG
+				//Do special debug stuff here
+				if (firstrun)
+				{
+					firstrun = false;
+					GameLoop.Game.world.SetTile(new Position(100, 100, 5), new Tile("TESTStone", 'O'));
+				}
+#endif
 			}
 		}
 

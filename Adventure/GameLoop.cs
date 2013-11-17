@@ -7,18 +7,15 @@ namespace Adventure
 		public static readonly GameLoop Game = new GameLoop();
 
 		public static TCODConsole Console { get; private set; }
+		internal World world { get; private set; }
 
 		private Screen Current;
-
-		public bool ShouldPause()
-		{
-			return this.Current.Pause;
-		}
 
 		public void Init()
 		{
 			Console = TCODConsole.root;
 			Current = null;
+			world = new World();
 		}
 
 		public void Update(TCODKey k, TCODMouseData m)
@@ -36,19 +33,20 @@ namespace Adventure
 		public void SetScreen(Screen s)
 		{
 			this.Current = s;
-
 		}
 	}
 
 	public class Screens
 	{
-		public static MainMenu Main { get; private set; }
+		public static MainMenu MainMenu { get; private set; }
+		public static WorldScreen WorldScreen { get; private set;}
 
 		public static void Init()
 		{
-			Main = new MainMenu();
+			MainMenu = new MainMenu();
+			WorldScreen = new WorldScreen();
 
-			GameLoop.Game.SetScreen(Main);
+			GameLoop.Game.SetScreen(MainMenu);
 		}
 	}
 }
