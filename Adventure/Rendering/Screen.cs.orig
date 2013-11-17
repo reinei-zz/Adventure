@@ -25,11 +25,15 @@ namespace Adventure
 			public delegate void Action();
 
 			protected string Text;
+<<<<<<< HEAD
 			protected Rect r;
-			protected TCODColor fcol;
 			protected int X, Y;
+=======
+			protected int X, Y, W, H;
+			protected TCODColor fcol;
 			protected TCODColor bcol;
 			protected TCODAlignment align;
+>>>>>>> 3e4d3701d5700a87a3f57df12ab2ad5af2d50368
 			protected Action A;
 			protected bool hover;
 
@@ -39,9 +43,14 @@ namespace Adventure
 				r = new Rect(x, y, w, h);
 				this.X = x;
 				this.Y = y;
+<<<<<<< HEAD
+=======
+				this.W = w;
+				this.H = h;
 				this.fcol = fcol;
 				this.bcol = bcol;
 				this.align = align;
+>>>>>>> 3e4d3701d5700a87a3f57df12ab2ad5af2d50368
 				this.A = a;
 			}
 
@@ -72,9 +81,13 @@ namespace Adventure
 
 			public void Update(TCODMouseData m)
 			{
-				bool intersects = r.Intersects(m);
+<<<<<<< HEAD
+				if (r.Intersects(m) && m.LeftButton)
+=======
+				bool intersects = (m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H);
 				hover = intersects;
 				if (intersects && m.LeftButton)
+>>>>>>> 3e4d3701d5700a87a3f57df12ab2ad5af2d50368
 				{
 					A();
 				}

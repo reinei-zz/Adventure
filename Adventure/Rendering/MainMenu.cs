@@ -10,7 +10,7 @@ namespace Adventure
 		{
 			int HalfW = (int)(this.Width / 2);
 			int HalfH = (int)(this.Height / 2);
-			Start = new Button("start", HalfW - 2, HalfH + 1, Startup);
+			Start = new Button("start", HalfW, HalfH + 1, TCODColor.white, TCODColor.darkGrey, TCODAlignment.CenterAlignment, Startup);
 			this.Pause = true;
 		}
 
@@ -25,7 +25,7 @@ namespace Adventure
 
 		public override void Update(TCODKey k, TCODMouseData m)
 		{
-			Start.Press(m);
+			Start.Update(m);
 		}
 
 		public void Startup()
