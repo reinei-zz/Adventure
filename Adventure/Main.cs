@@ -29,7 +29,11 @@ namespace Adventure
 #endif
 
 			bool run = !TCODConsole.isWindowClosed();
+
+#if DEBUG
 			bool firstrun = true;
+#endif
+
 			while (run)
 			{
 				//Events
