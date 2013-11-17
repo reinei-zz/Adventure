@@ -45,7 +45,10 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="DamageTypes.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="MathHelper.cs" />
+    <Compile Include="GameLoop.cs" />
+    <Compile Include="Screen.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="World.cs" />
