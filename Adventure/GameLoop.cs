@@ -23,7 +23,10 @@ namespace Adventure
 
 		public void Update(TCODKey k, TCODMouseData m)
 		{
-			this.Current.Handle(k, m);
+			GameLoop.Console.setForegroundColor(TCODColor.green);
+			GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
+			GameLoop.Console.clear();
+			this.Current.Update(k, m);
 
 			//GameLogic stuff here
 		}

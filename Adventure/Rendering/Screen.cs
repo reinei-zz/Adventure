@@ -18,7 +18,7 @@ namespace Adventure
 		//this is ONLY supposed to hadle rendering
 		public abstract void Render();
 
-		public abstract void Handle(TCODKey k, TCODMouseData m);
+		public abstract void Update(TCODKey k, TCODMouseData m);
 
 		internal class Button
 		{
@@ -45,9 +45,6 @@ namespace Adventure
 
 			public void Render()
 			{
-				GameLoop.Console.setForegroundColor(TCODColor.green);
-				GameLoop.Console.setBackgroundColor(TCODColor.darkGrey);
-				//TCODConsole.root.clear();
 				GameLoop.Console.print(X, Y, Text);
 			}
 

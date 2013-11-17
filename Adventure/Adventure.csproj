@@ -50,6 +50,7 @@
     <Compile Include="GameLoop.cs" />
     <Compile Include="Rendering\Screen.cs" />
     <Compile Include="Position.cs" />
+    <Compile Include="Rendering\WorldScreen.cs" />
     <Compile Include="World\Tile.cs" />
     <Compile Include="World\World.cs" />
     <Compile Include="World\WorldGen.cs" />

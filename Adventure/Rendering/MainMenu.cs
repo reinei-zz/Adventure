@@ -21,7 +21,7 @@ namespace Adventure
 			Start.Render();
 		}
 
-		public override void Handle(TCODKey k, TCODMouseData m)
+		public override void Update(TCODKey k, TCODMouseData m)
 		{
 			Start.Press(m);
 		}
