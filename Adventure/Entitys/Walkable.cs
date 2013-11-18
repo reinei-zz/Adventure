@@ -9,10 +9,12 @@ namespace Adventure.Entitys
 	{
 		public void Walk(Directions dir)
 		{
-
-			//Collision checks missing!
-
-			this.pos += Direction.DirectionPositions[dir];
+			Position dest_pos = this.pos + Direction.DirectionPositions[dir];
+			Tile dest_tile = GameLoop.Game.world.GetTile(dest_pos);
+			if (dest_tile.Mode != TileMode.Solid)
+			{
+				this.pos += Direction.DirectionPositions[dir];
+			}
 		}
 	}
 }
