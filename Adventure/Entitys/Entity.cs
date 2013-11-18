@@ -2,8 +2,12 @@ namespace Adventure.Entitys
 {
 	public abstract class Entity
 	{
-		public Position Pos;
-		public double Health;
+		public Position Pos { get { return this.pos; } }
+
+		public double Health { get { return this.health; } }
+
+		protected Position pos;
+		protected double health;
 
 		protected float[] Resistances { get; private set; }
 
@@ -11,7 +15,7 @@ namespace Adventure.Entitys
 
 		protected Entity(double health = 1)
 		{
-			this.Health = health;
+			this.health = health;
 			this.Resistances = new float[32];
 			this.Blocks = new byte[32];
 		}
@@ -22,10 +26,10 @@ namespace Adventure.Entitys
 			{
 				amount = MathHelper.damageAfterResistance(amount, d, Resistances);
 
-				this.Health -= amount;
-				if (this.Health <= 0)
+				this.health -= amount;
+				if (this.health <= 0)
 				{
-					this.Health = 0;
+					this.health = 0;
 					return true;
 				}
 			}

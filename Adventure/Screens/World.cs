@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using libtcod;
 
 namespace Adventure
@@ -6,33 +7,40 @@ namespace Adventure
 	public class Screen_World : Screen
 	{
 		internal Menu m;
+		internal Dictionary<char, Directions> player_directions;
 
 		public Screen_World() : base()
 		{
 			m = new Menu();
+			player_directions = new Dictionary<char,Directions>();
+
+			//Player direction controls
+			player_directions['w'] = Directions.Up;
+			player_directions['s'] = Directions.Down;
+			player_directions['a'] = Directions.Left;
+			player_directions['d'] = Directions.Right;
+
+			player_directions['q'] = Directions.UpLeft;
+			player_directions['e'] = Directions.UpRight;
+
+			player_directions['y'] = Directions.DownLeft;
+			player_directions['z'] = Directions.DownLeft;
+			player_directions['c'] = Directions.DownRight;
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)
 		{
-			if (k.Character == 'd')
+
+			//Player move
+			Directions dir;
+			if (player_directions.TryGetValue(k.Character, out dir))
 			{
-				PlayerPos = PlayerPos.translate(1, 0, 0);
+				Player.Walk(dir);
 			}
-			if (k.Character == 'a')
-			{
-				PlayerPos = PlayerPos.translate(-1, 0, 0);
-			}
-			if (k.Character == 'w')
-			{
-				PlayerPos = PlayerPos.translate(0, 0, -1);
-			}
-			if (k.Character == 's')
-			{
-				PlayerPos = PlayerPos.translate(0, 0, 1);
-			}
+
 		}
 
-		private Position PlayerPos = new Position(100, 5, 100);
+		private Entitys.Player Player = new Entitys.Player(new Position(100, 5, 100));
 
 		public override void Draw()
 		{
@@ -48,7 +56,7 @@ namespace Adventure
 			{
 				for (int y = -halfh; y <= halfh - 5; y++)
 				{
-					Position p = PlayerPos.translate(x, 0, y);
+					Position p = Player.Pos.translate(x, 0, y);
 					Tile t = GameLoop.Game.world.GetTile(p);
 					int ScreenX = halfw + x;
 					int ScreenY = halfh + y;
@@ -59,7 +67,7 @@ namespace Adventure
             GameLoop.Console.putChar(halfw, halfh, 2);
             GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			m.Draw(PlayerPos);
+			m.Draw(Player.Pos);
 		}
 	}
 }
