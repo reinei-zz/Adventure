@@ -10,9 +10,6 @@ namespace Adventure
 
     public class Menu
     {
-		internal static int BaseChar = 12*15 + 4;
-		internal int HBorder = BaseChar + 21;
-		internal int VBorder = BaseChar + 2;
 
 		public void Draw(Position playerPos)
 		{
@@ -25,36 +22,36 @@ namespace Adventure
 			GameLoop.Console.setForegroundColor(TCODColor.lightGrey);
 			for (int x = 1; x < width - 1 ; x++)
 			{
-				GameLoop.Console.putChar(x, height - 5, HBorder);
+				GameLoop.Console.putChar(x, height - 5, (int)TCODSpecialCharacter.DoubleHorzLine);
 			}
 			for (int x = 1; x < width - 1; x++)
 			{
-				GameLoop.Console.putChar(x, height - 1, HBorder);
+				GameLoop.Console.putChar(x, height - 1, (int)TCODSpecialCharacter.DoubleHorzLine);
 			}
 
 			for (int y = height - 4; y < height - 1; y++)
 			{
-				GameLoop.Console.putChar(0, y, VBorder);
+				GameLoop.Console.putChar(0, y, (int)TCODSpecialCharacter.DoubleVertLine);
 			}
 			for (int y = height - 4; y < height - 1; y++)
 			{
-				GameLoop.Console.putChar(width - 1, y, VBorder);
+				GameLoop.Console.putChar(width - 1, y, (int)TCODSpecialCharacter.DoubleVertLine);
 			}
 
 			//Corners (in order: top right, bottom Right, bottom left, top left
-			GameLoop.Console.putChar(width - 1, height - 5, BaseChar + 3);
-			GameLoop.Console.putChar(width - 1, height - 1, BaseChar + 4);
-			GameLoop.Console.putChar(0, height - 1, BaseChar + 16);
-			GameLoop.Console.putChar(0, height - 5, BaseChar + 17);
+			GameLoop.Console.putChar(width - 1, height - 5, (int)TCODSpecialCharacter.DoubleNE);
+			GameLoop.Console.putChar(width - 1, height - 1, (int)TCODSpecialCharacter.DoubleSE);
+			GameLoop.Console.putChar(0, height - 1, (int)TCODSpecialCharacter.DoubleSW);
+			GameLoop.Console.putChar(0, height - 5, (int)TCODSpecialCharacter.DoubleNW);
 
-			GameLoop.Console.putChar(width - 15, height - 5, HBorder - 2);
-			GameLoop.Console.putChar(width - 15, height - 4, VBorder);
-			GameLoop.Console.putChar(width - 15, height - 3, HBorder - 1);
+			GameLoop.Console.putChar(width - 15, height - 5, (int)TCODSpecialCharacter.DoubleTeeSouth);
+			GameLoop.Console.putChar(width - 15, height - 4, (int)TCODSpecialCharacter.DoubleVertLine);
+			GameLoop.Console.putChar(width - 15, height - 3, (int)TCODSpecialCharacter.DoubleTeeEast);
 			for (int x = width - 14; x < width - 1; x++)
 			{
-				GameLoop.Console.putChar(x, height - 3, HBorder);
+				GameLoop.Console.putChar(x, height - 3, (int)TCODSpecialCharacter.DoubleHorzLine);
 			}
-			GameLoop.Console.putChar(width - 1, height - 3, VBorder - 1);
+			GameLoop.Console.putChar(width - 1, height - 3, (int)TCODSpecialCharacter.DoubleTeeWest);
 
 
 			//Border finished
