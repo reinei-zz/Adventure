@@ -14,6 +14,7 @@ namespace Adventure.Entitys
 			if (dest_tile.Mode != TileMode.Solid)
 			{
 				this.pos += Direction.DirectionPositions[dir];
+				GameLoop.Game.world.Event_Noise(this.pos, World.NoiseType.Step);
 			}
 		}
 	}

@@ -35,5 +35,11 @@ namespace Adventure.Entitys
 			}
 			return false;
 		}
+
+		public void Event_Noise(Position pos, double amount)
+		{
+
+		}
+
 	}
 }

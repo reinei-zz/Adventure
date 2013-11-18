@@ -63,6 +63,69 @@ namespace Adventure
 				return LoadedChunks[chunkpos];
 			}
 		}
+
+		public List<Entitys.Entity> GetEntitys(Position chunkpos)
+		{
+			Chunk c = GetChunk(chunkpos);
+			c.Idle = 0;
+			return c.Entitys;
+		}
+
+		public List<Entitys.Entity> GetEntitys_Range(Position pos, long range)
+		{
+			List<Entitys.Entity> Entitys = new List<Entitys.Entity>();
+			List<Position> ChunksInRange = new List<Position>();
+			Position Chunk_Start = new Position((pos.x - range) / Chunk.Size, (pos.y - range) / Chunk.Size, (pos.z - range) / Chunk.Size);
+			Position Chunk_End = new Position((pos.x + range) / Chunk.Size, (pos.y + range) / Chunk.Size, (pos.z + range) / Chunk.Size);
+
+			//Get all chunks in range
+			for (long x = Chunk_Start.x; x <= Chunk_End.x; x++)
+			{
+				for (long y = Chunk_Start.y; y <= Chunk_End.y; y++)
+				{
+					for (long z = Chunk_Start.z; z <= Chunk_End.z; z++)
+					{
+						ChunksInRange.Add(new Position(x, y, z));
+					}
+				}
+			}
+
+			//Get all entitys in range
+			foreach (Position p in ChunksInRange)
+			{
+				List<Entitys.Entity> ChunkEntitys = GetChunk(p).Entitys;
+				foreach (Entitys.Entity e in ChunkEntitys)
+				{
+					if (pos.Distance(e.Pos) <= range)
+					{
+						Entitys.Add(e);
+					}
+				}
+			}
+
+			return Entitys;
+		}
+
+		//Events
+
+		public enum NoiseType
+		{
+			Step
+		}
+
+		public static Dictionary<NoiseType, long> NoiseRanges = new Dictionary<NoiseType, long>()
+		{
+			{ NoiseType.Step, 10}
+        };
+
+		public void Event_Noise(Position pos, NoiseType type)
+		{
+			long range = NoiseRanges[type];
+			foreach (Entitys.Entity e in GetEntitys_Range(pos, range))
+			{
+				e.Event_Noise(pos, pos.Distance(e.Pos) / range);
+			}
+		}
 	}
 
 	internal class Chunk
@@ -72,6 +135,7 @@ namespace Adventure
 
 		public Position Pos;
 		public Tile[, ,] Tiles = new Tile[Size, Size, Size];
+		public List<Entitys.Entity> Entitys = new List<Entitys.Entity>();
 		public short Idle = 0;
 
 		public Chunk(Position pos)
@@ -88,6 +152,7 @@ namespace Adventure
 		{
 			//TODO
 		}
+
 		public static Chunk LoadFromFile(Position chunkpos)
 		{
 			//TODO
