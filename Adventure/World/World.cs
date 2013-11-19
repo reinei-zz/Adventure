@@ -50,12 +50,24 @@ namespace Adventure
 
 		public Position GetChunkPosition(Position tilepos)
 		{
-			return new Position(tilepos.x / Chunk.Size, tilepos.y / Chunk.Size, tilepos.z / Chunk.Size);
+			long x = tilepos.x / Chunk.Size;
+			long y = tilepos.y / Chunk.Size;
+			long z = tilepos.z / Chunk.Size;
+			if (tilepos.x < 0) x--;
+			if (tilepos.y < 0) y--;
+			if (tilepos.z < 0) z--;
+			return new Position(x, y, z);
 		}
 
 		public Position GetChunkTileIndex(Position tilepos, Position chunkpos)
 		{
-			return new Position(tilepos.x - chunkpos.x * Chunk.Size, tilepos.y - chunkpos.y * Chunk.Size, tilepos.z - chunkpos.z * Chunk.Size);
+			long x = tilepos.x - chunkpos.x * Chunk.Size;
+			long y = tilepos.y - chunkpos.y * Chunk.Size;
+			long z = tilepos.z - chunkpos.z * Chunk.Size;
+			if (tilepos.x < 0) x = -(x - Chunk.Size);
+			if (tilepos.y < 0) y = -(y - Chunk.Size);
+			if (tilepos.z < 0) z = -(z - Chunk.Size);
+			return new Position(x, y, z);
 		}
 
 		public Chunk GetChunk(Position chunkpos)
