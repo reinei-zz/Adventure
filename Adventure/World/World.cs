@@ -32,7 +32,7 @@ namespace Adventure
 
 		public void SetTile(Position pos, Tile tile)
 		{
-			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
+			Position chunkpos = GetChunk_Position(pos);
 			Chunk c = GetChunk(chunkpos);
 			c.Idle = 0;
 			c.Tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)] = tile;
@@ -40,10 +40,15 @@ namespace Adventure
 
 		public Tile GetTile(Position pos)
 		{
-			Position chunkpos = new Position(pos.x / Chunk.Size, pos.y / Chunk.Size, pos.z / Chunk.Size);
+			Position chunkpos = GetChunk_Position(pos);
 			Chunk c = GetChunk(chunkpos);
 			c.Idle = 0;
 			return c.Tiles[pos.x - (chunkpos.x * Chunk.Size), pos.y - (chunkpos.y * Chunk.Size), pos.z - (chunkpos.z * Chunk.Size)];
+		}
+
+		public Position GetChunk_Position(Position tilepos)
+		{
+			return new Position(tilepos.x / Chunk.Size, tilepos.y / Chunk.Size, tilepos.z / Chunk.Size);
 		}
 
 		public Chunk GetChunk(Position chunkpos)
@@ -75,8 +80,8 @@ namespace Adventure
 		{
 			List<Entitys.Entity> Entitys = new List<Entitys.Entity>();
 			List<Position> ChunksInRange = new List<Position>();
-			Position Chunk_Start = new Position((pos.x - range) / Chunk.Size, (pos.y - range) / Chunk.Size, (pos.z - range) / Chunk.Size);
-			Position Chunk_End = new Position((pos.x + range) / Chunk.Size, (pos.y + range) / Chunk.Size, (pos.z + range) / Chunk.Size);
+			Position Chunk_Start = GetChunk_Position(pos.translate(-range, -range, -range));
+			Position Chunk_End = GetChunk_Position(pos.translate(range, range, range));
 
 			//Get all chunks in range
 			for (long x = Chunk_Start.x; x <= Chunk_End.x; x++)

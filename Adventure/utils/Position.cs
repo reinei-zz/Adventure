@@ -18,12 +18,12 @@ namespace Adventure
 			return "(" + this.x.ToString() + "," + this.y.ToString() + "," + this.z.ToString() + ")";
 		}
 
-		public Position translate(int x, int y, int z)
+		public Position translate(long x, long y, long z)
 		{
 			return new Position(this.x + x, this.y + y, this.z + z);
 		}
 
-		public void add(int x, int y, int z)
+		public void add(long x, long y, long z)
 		{
 			this.x += x;
 			this.y += y;
