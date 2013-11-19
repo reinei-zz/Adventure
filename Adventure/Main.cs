@@ -25,7 +25,6 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
-
 #if DEBUG
 			bool firstrun = true;
 #endif
@@ -49,6 +48,10 @@ namespace Adventure
 				{
 					firstrun = false;
 					GameLoop.Game.world.SetTile(new Position(110, 5, 110), Tile.Stone);
+					for (int x = 0; x < 100; x++)
+					{
+						GameLoop.Game.world.SetTile(new Position(10 + x, 5, 10 + x), Tile.Stone);
+					}
 				}
 #endif
 			}

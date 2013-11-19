@@ -40,7 +40,7 @@ namespace Adventure
 
 		}
 
-		private Entitys.Player Player = new Entitys.Player(new Position(100, 5, 100));
+		private Entitys.Entity Player = new Entitys.Entity(new Position(50, 5, 50), 1, true);
 
 		public override void Draw()
 		{
