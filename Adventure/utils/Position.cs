@@ -15,7 +15,7 @@ namespace Adventure
 
 		public override string ToString()
 		{
-			return "(" + this.x.ToString() + "," + this.y.ToString() + "," + this.z.ToString() + ")";
+			return "{" + this.x.ToString() + "," + this.y.ToString() + "," + this.z.ToString() + "}";
 		}
 
 		public Position translate(long x, long y, long z)

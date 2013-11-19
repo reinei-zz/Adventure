@@ -165,7 +165,7 @@ namespace Adventure
 			long range = NoiseRanges[type];
 			foreach (Entitys.Entity e in GetEntitys_Range(pos, range))
 			{
-				e.Event_Noise(pos, pos.Distance(e.Pos) / range);
+				e.Event_Noise(pos, 1 - pos.Distance(e.Pos) / range);
 			}
 		}
 	}

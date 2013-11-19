@@ -61,7 +61,6 @@ namespace Adventure.Entitys
 
 		public void Event_Noise(Position pos, double amount)
 		{
-
 		}
 
 	}
