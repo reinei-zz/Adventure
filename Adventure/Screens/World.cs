@@ -60,7 +60,7 @@ namespace Adventure
 					Tile t = GameLoop.Game.world.GetTile(p);
 					int ScreenX = halfw + x;
 					int ScreenY = halfh + y;
-					ConsoleChar c = t.Visual();
+					ConsoleChar c = Tiles.Visuals[(int)t];
 					GameLoop.Console.putCharEx(ScreenX, ScreenY, c.Char, c.FCol, c.BCol);
 				}
 			}

@@ -11,7 +11,7 @@ namespace Adventure.Entitys
 		{
 			Position dest_pos = this.pos + Direction.DirectionPositions[dir];
 			Tile dest_tile = GameLoop.Game.world.GetTile(dest_pos);
-			if (dest_tile.Mode() != TileMode.Solid)
+			if (Tiles.Modes[(int)dest_tile] != TileMode.Solid)
 			{
 				this.pos += Direction.DirectionPositions[dir];
 				GameLoop.Game.world.Event_Noise(this.pos, World.NoiseType.Step);

@@ -89,7 +89,7 @@ namespace Adventure
 		}
 	}
 
-	struct ConsoleChar
+	public struct ConsoleChar
 	{
 		public char Char;
 		public TCODColor FCol;

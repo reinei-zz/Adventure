@@ -13,15 +13,14 @@
 					for (short z = 0; z < Chunk.Size; z++)
 					{
 
-						Tiles tile = Tiles.Air;
+						Tile tile = Tile.Air;
 
 						if (y <= 0)
 						{
-							tile = Tiles.Stone;
+							tile = Tile.Stone;
 						}
 
-
-						c.Tiles[x, y, z] = new Tile(tile);
+						c.Tiles[x, y, z] = tile;
 					}
 				}
 			}
