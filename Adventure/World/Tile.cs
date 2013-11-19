@@ -1,5 +1,14 @@
-﻿namespace Adventure
+﻿using System.Collections.Generic;
+using libtcod;
+
+namespace Adventure
 {
+	enum Tiles : byte
+	{
+		Air,
+		Stone
+	}
+
 	enum TileMode : byte
 	{
 		Solid,
@@ -9,15 +18,24 @@
 
 	internal struct Tile
 	{
-		public string Identifier;
-		public char Visual;
+		public static Dictionary<Tiles, ConsoleChar> Visuals = new Dictionary<Tiles,ConsoleChar>()
+		{
+			{ Tiles.Air, new ConsoleChar(' ', TCODColor.white, TCODColor.black)},
+			{ Tiles.Stone, new ConsoleChar('O', TCODColor.darkGrey, TCODColor.lightGrey)}
+        };
+
+		public Tiles Identifier;
 		public TileMode Mode;
 
-		public Tile(string identifier, char visual, TileMode mode)
+		public Tile(Tiles identifier, TileMode mode)
 		{
 			this.Identifier = identifier;
-			this.Visual = visual;
 			this.Mode = mode;
+		}
+
+		public ConsoleChar Visual()
+		{
+			return Visuals[this.Identifier];
 		}
 	}
 }

@@ -88,4 +88,17 @@ namespace Adventure
 			return ((m.CellX >= X && m.CellX <= X + W) && (m.CellY >= Y && m.CellY < Y + H));
 		}
 	}
+
+	struct ConsoleChar
+	{
+		public char Char;
+		public TCODColor FCol;
+		public TCODColor BCol;
+		public ConsoleChar(char Char, TCODColor FCol, TCODColor BCol)
+		{
+			this.Char = Char;
+			this.FCol = FCol;
+			this.BCol = BCol;
+		}
+	}
 }

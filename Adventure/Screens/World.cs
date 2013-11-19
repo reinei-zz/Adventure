@@ -60,7 +60,8 @@ namespace Adventure
 					Tile t = GameLoop.Game.world.GetTile(p);
 					int ScreenX = halfw + x;
 					int ScreenY = halfh + y;
-					GameLoop.Console.print(ScreenX, ScreenY, t.Visual.ToString());
+					ConsoleChar c = t.Visual();
+					GameLoop.Console.putCharEx(ScreenX, ScreenY, c.Char, c.FCol, c.BCol);
 				}
 			}
             GameLoop.Console.setForegroundColor(TCODColor.darkerLime);

@@ -12,7 +12,7 @@
 				{
 					for (short z = 0; z < Chunk.Size; z++)
 					{
-						c.Tiles[x, y, z] = new Tile("air", ' ', TileMode.Passable);
+						c.Tiles[x, y, z] = new Tile(Tiles.Air, TileMode.Passable);
 					}
 				}
 			}
