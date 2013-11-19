@@ -35,12 +35,10 @@ namespace Adventure
 			Directions dir;
 			if (player_directions.TryGetValue(k.Character, out dir))
 			{
-				Player.Walk(dir);
+				GameLoop.Game.Player.Walk(dir);
 			}
 
 		}
-
-		private Entitys.Entity Player = new Entitys.Entity(new Position(50, 5, 50), 1, true);
 
 		public override void Draw()
 		{
@@ -56,7 +54,7 @@ namespace Adventure
 			{
 				for (int y = -halfh; y <= halfh - 5; y++)
 				{
-					Position p = Player.Pos.translate(x, 0, y);
+					Position p = GameLoop.Game.Player.Pos.translate(x, 0, y);
 					Tile t = GameLoop.Game.world.GetTile(p);
 					int ScreenX = halfw + x;
 					int ScreenY = halfh + y;
@@ -68,7 +66,7 @@ namespace Adventure
             GameLoop.Console.putChar(halfw, halfh, 2);
             GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			m.Draw(Player.Pos);
+			m.Draw(GameLoop.Game.Player.Pos);
 		}
 	}
 }

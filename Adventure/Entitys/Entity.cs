@@ -3,14 +3,13 @@ namespace Adventure.Entitys
 	public class Entity
 	{
 		//State
-		public Position Pos { get { return this.pos; } }
+		public Position Pos;
 		public double Health { get { return this.health; } }
 
 		//Abilitys
 		public bool CanWalk;
 
 		//Protected
-		protected Position pos;
 		protected double health;
 
 		protected float[] Resistances { get; private set; }
@@ -18,7 +17,7 @@ namespace Adventure.Entitys
 
 		public Entity(Position pos, double health, bool canwalk)
 		{
-			this.pos = pos;
+			this.Pos = pos;
 			this.health = health;
 
 			this.CanWalk = canwalk;
@@ -48,12 +47,12 @@ namespace Adventure.Entitys
 		{
 			if (this.CanWalk)
 			{
-				Position dest_pos = this.pos + Direction.DirectionPositions[dir];
+				Position dest_pos = this.Pos + Direction.DirectionPositions[dir];
 				Tile dest_tile = GameLoop.Game.world.GetTile(dest_pos);
 				if (Tiles.Modes[(int)dest_tile] != TileMode.Solid)
 				{
-					this.pos += Direction.DirectionPositions[dir];
-					GameLoop.Game.world.Event_Noise(this.pos, World.NoiseType.Step);
+					GameLoop.Game.world.MoveEntity(this, this.Pos + Direction.DirectionPositions[dir]);
+					GameLoop.Game.world.Event_Noise(this.Pos, World.NoiseType.Step);
 					return true;
 				}
 			}

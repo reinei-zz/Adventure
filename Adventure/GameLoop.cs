@@ -9,6 +9,7 @@ namespace Adventure
 		public static TCODConsole Console { get; private set; }
 		internal World world { get; private set; }
 
+		public Entitys.Entity Player = null;
 		public bool Run = true;
 		private Screen Current;
 

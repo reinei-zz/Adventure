@@ -40,6 +40,16 @@ namespace Adventure
 			return new Position(c1.x - c2.x, c1.y - c2.y, c1.z - c2.z);
 		}
 
+		public static bool operator ==(Position c1, Position c2)
+		{
+			return (c1.x == c2.x) && (c1.y == c2.y) && (c1.z == c2.z);
+		}
+
+		public static bool operator !=(Position c1, Position c2)
+		{
+			return (c1.x != c2.x) || (c1.y != c2.y) || (c1.z != c2.z);
+		}
+
 		public static double Distance(Position c1, Position c2)
 		{
 			return Math.Sqrt(Math.Pow(c2.x - c1.x, 2) + Math.Pow(c2.y - c1.y, 2) + Math.Pow(c2.z - c1.z, 2));

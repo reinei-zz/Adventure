@@ -88,6 +88,24 @@ namespace Adventure
 			}
 		}
 
+		public void AddEntity(Entitys.Entity e)
+		{
+			Position chunkpos = GetChunkPosition(e.Pos);
+			GetChunk(chunkpos).Entitys.Add(e);
+		}
+
+		public void MoveEntity(Entitys.Entity e, Position dest)
+		{
+			Position chunkpos_before = GetChunkPosition(e.Pos);
+			e.Pos = dest;
+			Position chunkpos_after = GetChunkPosition(e.Pos);
+			if (chunkpos_before != chunkpos_after)
+			{
+				GetChunk(chunkpos_before).Entitys.Remove(e);
+				GetChunk(chunkpos_after).Entitys.Add(e);
+			}
+		}
+
 		public List<Entitys.Entity> GetEntitys(Position chunkpos)
 		{
 			Chunk c = GetChunk(chunkpos);

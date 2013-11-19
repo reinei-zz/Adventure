@@ -25,9 +25,19 @@ namespace Adventure
 			GameLoop.Game.Init();
 			Screens.Init();
 
+			//Add player
+			GameLoop.Game.Player = new Entitys.Entity(new Position(9, 5, 9), 1, true);
+			GameLoop.Game.world.AddEntity(GameLoop.Game.Player);
+
 #if DEBUG
-			bool firstrun = true;
+			//Add debug tiles
+			GameLoop.Game.world.SetTile(new Position(110, 5, 110), Tile.Stone);
+			for (int x = 0; x < 100; x++)
+			{
+				GameLoop.Game.world.SetTile(new Position(10 + x, 5, 10 + x), Tile.Stone);
+			}
 #endif
+
 			while (GameLoop.Game.Run)
 
 			{
@@ -41,19 +51,7 @@ namespace Adventure
 
 				//Finish
 				TCODConsole.flush();
-				
-#if DEBUG
-				//Do special debug stuff here
-				if (firstrun)
-				{
-					firstrun = false;
-					GameLoop.Game.world.SetTile(new Position(110, 5, 110), Tile.Stone);
-					for (int x = 0; x < 100; x++)
-					{
-						GameLoop.Game.world.SetTile(new Position(10 + x, 5, 10 + x), Tile.Stone);
-					}
-				}
-#endif
+
 			}
 		}
 
