@@ -3,13 +3,13 @@ using libtcod;
 
 namespace Adventure
 {
-	enum Tiles : byte
+	internal enum Tiles : byte
 	{
 		Air,
 		Stone
 	}
 
-	enum TileMode : byte
+	internal enum TileMode : byte
 	{
 		Solid,
 		Passable,
@@ -18,24 +18,33 @@ namespace Adventure
 
 	internal struct Tile
 	{
-		public static Dictionary<Tiles, ConsoleChar> Visuals = new Dictionary<Tiles,ConsoleChar>()
+		public static Dictionary<Tiles, ConsoleChar> Visuals = new Dictionary<Tiles, ConsoleChar>()
 		{
-			{ Tiles.Air, new ConsoleChar(' ', TCODColor.white, TCODColor.black)},
-			{ Tiles.Stone, new ConsoleChar('O', TCODColor.darkGrey, TCODColor.lightGrey)}
+			{ Tiles.Air, new ConsoleChar(' ', TCODColor.white, TCODColor.black) },
+			{ Tiles.Stone, new ConsoleChar('O', TCODColor.darkGrey, TCODColor.lightGrey) }
         };
 
-		public Tiles Identifier;
-		public TileMode Mode;
+		public static Dictionary<Tiles, TileMode> Modes = new Dictionary<Tiles, TileMode>()
+		{
+			{ Tiles.Air, TileMode.Passable },
+			{ Tiles.Stone, TileMode.Solid }
+		};
 
-		public Tile(Tiles identifier, TileMode mode)
+		public Tiles Identifier;
+
+		public Tile(Tiles identifier)
 		{
 			this.Identifier = identifier;
-			this.Mode = mode;
 		}
 
 		public ConsoleChar Visual()
 		{
 			return Visuals[this.Identifier];
+		}
+
+		public TileMode Mode()
+		{
+			return Modes[this.Identifier];
 		}
 	}
 }

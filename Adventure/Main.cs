@@ -48,7 +48,7 @@ namespace Adventure
 				if (firstrun)
 				{
 					firstrun = false;
-					GameLoop.Game.world.SetTile(new Position(110, 5, 110), new Tile(Tiles.Stone, TileMode.Solid));
+					GameLoop.Game.world.SetTile(new Position(110, 5, 110), new Tile(Tiles.Stone));
 				}
 #endif
 			}

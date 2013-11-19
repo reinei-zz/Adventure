@@ -12,7 +12,16 @@
 				{
 					for (short z = 0; z < Chunk.Size; z++)
 					{
-						c.Tiles[x, y, z] = new Tile(Tiles.Air, TileMode.Passable);
+
+						Tiles tile = Tiles.Air;
+
+						if (y <= 0)
+						{
+							tile = Tiles.Stone;
+						}
+
+
+						c.Tiles[x, y, z] = new Tile(tile);
 					}
 				}
 			}
