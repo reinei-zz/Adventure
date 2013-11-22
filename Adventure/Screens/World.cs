@@ -42,8 +42,6 @@ namespace Adventure
 
 		public override void Draw()
 		{
-			//Get PlayerPosition
-			
 
 			//create constans that are usefull
 			int halfw = (this.Width - 1) / 2;

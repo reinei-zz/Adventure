@@ -72,6 +72,7 @@ namespace Adventure
 		}
 	}
 
+	[Flags]
 	public enum DamageType : uint
 	{
 		[DamageAttr(true, true)]
