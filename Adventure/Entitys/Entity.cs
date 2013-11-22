@@ -75,7 +75,7 @@ namespace Adventure.Entitys
 			while (true)
 			{
 				repeat = false;
-				pos_below = this.Pos.translate(0, 1, 0);
+				pos_below = this.Pos.translate(0, -1, 0);
 				tile_below = GameLoop.Game.world.GetTile(pos_below);
 
 				//Check floor

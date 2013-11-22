@@ -24,6 +24,7 @@ namespace Adventure
 			TCODConsole.root.clear();
 			GameLoop.Game.Init();
 			Screens.Init();
+			Tiles.Init();
 
 			//Add player
 			GameLoop.Game.Player = new Entitys.Entity(new Position(9, 5, 9), 1, true);
@@ -31,15 +32,13 @@ namespace Adventure
 
 #if DEBUG
 			//Add debug tiles
-			GameLoop.Game.world.SetTile(new Position(110, 5, 110), Tile.Stone);
 			for (int x = 0; x < 100; x++)
 			{
-				GameLoop.Game.world.SetTile(new Position(10 + x, 5, 10 + x), Tile.Stone);
+				GameLoop.Game.world.SetTile(new Position(10 + x, 2, 10 + x), Tile.Stone);
 			}
 #endif
 
 			while (GameLoop.Game.Run)
-
 			{
 				//Events
 				TCODKey event_key = TCODConsole.checkForKeypress((int)TCODKeyStatus.KeyPressed);

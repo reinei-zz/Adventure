@@ -20,6 +20,11 @@
 							tile = Tile.Stone;
 						}
 
+						if (y == 1)
+						{
+							tile = Tile.Grass;
+						}
+
 						c.Tiles[x, y, z] = tile;
 					}
 				}
