@@ -29,7 +29,6 @@ namespace Adventure
 			//Add player
 			GameLoop.Game.Player = new Entitys.Entity(new Position(9, 5, 9), 1, true);
 			GameLoop.Game.world.AddEntity(GameLoop.Game.Player);
-
 #if DEBUG
 			//Add debug tiles
 			for (int x = 0; x < 100; x++)
