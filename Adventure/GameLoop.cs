@@ -25,6 +25,7 @@ namespace Adventure
 			this.Current.Update(k, m);
 
 			//GameLogic stuff here
+			//world.Update();
 
 			//Should exit?
 			this.Run = this.Run && !TCODConsole.isWindowClosed();

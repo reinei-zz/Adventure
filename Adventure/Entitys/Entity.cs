@@ -11,6 +11,7 @@ namespace Adventure.Entitys
 
 		//Protected
 		protected double health;
+		protected long fallcount;
 
 		protected float[] Resistances { get; private set; }
 		protected byte[] Blocks { get; private set; }
@@ -19,6 +20,7 @@ namespace Adventure.Entitys
 		{
 			this.Pos = pos;
 			this.health = health;
+			this.fallcount = 0;
 
 			this.CanWalk = canwalk;
 
@@ -61,6 +63,43 @@ namespace Adventure.Entitys
 
 		public void Event_Noise(Position pos, double amount)
 		{
+		}
+
+		public void Physics_Update()
+		{
+			//Variables
+			bool repeat;
+			Position pos_below;
+			Tile tile_below;
+
+			while (true)
+			{
+				repeat = false;
+				pos_below = this.Pos.translate(0, 1, 0);
+				tile_below = GameLoop.Game.world.GetTile(pos_below);
+
+				//Check floor
+				if (Tiles.Modes[(int)tile_below] == TileMode.Solid)
+				{
+					if (fallcount > 0)
+					{
+						//Damage if too high
+					}
+					this.fallcount = 0;
+				}
+				else //Fall down
+				{
+					GameLoop.Game.world.MoveEntity(this, pos_below);
+					this.fallcount++;
+					repeat = true;
+				}
+
+				//Repeat
+				if (!repeat)
+				{
+					break;
+				}
+			}			
 		}
 
 	}
