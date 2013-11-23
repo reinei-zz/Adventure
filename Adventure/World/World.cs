@@ -5,6 +5,8 @@ namespace Adventure
 {
 	internal class World
 	{
+		public long Turns_Total;
+
 		private Dictionary<Position, Chunk> LoadedChunks = new Dictionary<Position, Chunk>();
 
 		public void Update(TCODKey k, TCODMouseData m)
@@ -40,15 +42,18 @@ namespace Adventure
 					entitys.Add(e.Sleep, e);
 				}
 			}
-			foreach (KeyValuePair<long, Entitys.Entity> kv in entitys)
-			{
-				kv.Value.Sleep -= sleep_lowest;
-			}
 			if (entitys.Count > 0)
 			{
 				sleep_lowest = entitys.Values[0].Sleep;
 				entitys.Values[0].Event_Tick(k, m);
 			}
+			foreach (KeyValuePair<long, Entitys.Entity> kv in entitys)
+			{
+				kv.Value.Sleep -= sleep_lowest;
+			}
+			Turns_Total += sleep_lowest;
+			System.Console.WriteLine(Turns_Total);
+
 		}
 
 		public void SetTile(Position pos, Tile tile)

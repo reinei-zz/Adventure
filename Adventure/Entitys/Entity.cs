@@ -79,6 +79,7 @@ namespace Adventure.Entitys
 				{
 					GameLoop.Game.Player.Walk(dir);
 				}
+				this.Sleep = 1;
 			}
 			else
 			{
