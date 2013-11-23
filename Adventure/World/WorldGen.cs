@@ -15,11 +15,11 @@
 
 						Tile tile = Tile.Air;
 
-						if (y <= 0)
+						//Surface
+						if (y > 1)
 						{
 							tile = Tile.Stone;
 						}
-
 						if (y == 1)
 						{
 							tile = Tile.Grass;

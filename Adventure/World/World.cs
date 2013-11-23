@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using libtcod;
 
 namespace Adventure
 {
@@ -6,9 +7,11 @@ namespace Adventure
 	{
 		private Dictionary<Position, Chunk> LoadedChunks = new Dictionary<Position, Chunk>();
 
-		public void Update()
+		public void Update(TCODKey k, TCODMouseData m)
 		{
 			List<Position> unload = new List<Position>();
+			SortedList<long, Entitys.Entity> entitys = new SortedList<long,Entitys.Entity>();
+			long sleep_lowest = 1;
 
 			//Update loaded chunks
 			foreach (KeyValuePair<Position, Chunk> kv in LoadedChunks)
@@ -27,6 +30,24 @@ namespace Adventure
 			{
 				LoadedChunks[p].SaveToFile();
 				LoadedChunks.Remove(p);
+			}
+
+			//Tick next entity
+			foreach (KeyValuePair<Position, Chunk> kv in LoadedChunks)
+			{
+				foreach (Entitys.Entity e in kv.Value.Entitys)
+				{
+					entitys.Add(e.Sleep, e);
+				}
+			}
+			foreach (KeyValuePair<long, Entitys.Entity> kv in entitys)
+			{
+				kv.Value.Sleep -= sleep_lowest;
+			}
+			if (entitys.Count > 0)
+			{
+				sleep_lowest = entitys.Values[0].Sleep;
+				entitys.Values[0].Event_Tick(k, m);
 			}
 		}
 

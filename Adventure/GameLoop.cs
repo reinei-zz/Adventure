@@ -22,10 +22,7 @@ namespace Adventure
 
 		public void Update(TCODKey k, TCODMouseData m)
 		{
-			this.Current.Update(k, m);
-
-			//GameLogic stuff here
-			//world.Update();
+			this.Current.Update(k, m);			
 
 			//Should exit?
 			this.Run = this.Run && !TCODConsole.isWindowClosed();

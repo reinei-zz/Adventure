@@ -27,13 +27,13 @@ namespace Adventure
 			Tiles.Init();
 
 			//Add player
-			GameLoop.Game.Player = new Entitys.Entity(new Position(9, 5, 9), 1, true);
+			GameLoop.Game.Player = new Entitys.Entity(new Position(9, 0, 9), 1, true);
 			GameLoop.Game.world.AddEntity(GameLoop.Game.Player);
 #if DEBUG
 			//Add debug tiles
 			for (int x = 0; x < 100; x++)
 			{
-				GameLoop.Game.world.SetTile(new Position(10 + x, 2, 10 + x), Tile.Stone);
+				GameLoop.Game.world.SetTile(new Position(10 + x, 0, 10 + x), Tile.Stone);
 			}
 #endif
 

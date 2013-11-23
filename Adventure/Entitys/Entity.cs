@@ -1,3 +1,5 @@
+using libtcod;
+
 namespace Adventure.Entitys
 {
 	public class Entity
@@ -5,6 +7,7 @@ namespace Adventure.Entitys
 		//State
 		public Position Pos;
 		public double Health { get { return this.health; } }
+		public long Sleep;
 
 		//Abilitys
 		public bool CanWalk;
@@ -21,6 +24,7 @@ namespace Adventure.Entitys
 			this.Pos = pos;
 			this.health = health;
 			this.fallcount = 0;
+			this.Sleep = 0;
 
 			this.CanWalk = canwalk;
 
@@ -63,6 +67,23 @@ namespace Adventure.Entitys
 
 		public void Event_Noise(Position pos, double amount)
 		{
+		}
+
+		public void Event_Tick(TCODKey k, TCODMouseData m)
+		{
+			if (this == GameLoop.Game.Player)
+			{
+				//Player move
+				Directions dir;
+				if (Screens.World.PlayerDirections.TryGetValue(k.Character, out dir))
+				{
+					GameLoop.Game.Player.Walk(dir);
+				}
+			}
+			else
+			{
+				this.Sleep = 10;
+			}
 		}
 
 		public void Physics_Update()

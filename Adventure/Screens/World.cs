@@ -7,37 +7,31 @@ namespace Adventure
 	public class Screen_World : Screen
 	{
 		internal Menu m;
-		internal Dictionary<char, Directions> player_directions;
+		public Dictionary<char, Directions> PlayerDirections;
 
 		public Screen_World() : base()
 		{
 			m = new Menu();
-			player_directions = new Dictionary<char,Directions>();
+			PlayerDirections = new Dictionary<char,Directions>();
 
 			//Player direction controls
-			player_directions['w'] = Directions.Up;
-			player_directions['s'] = Directions.Down;
-			player_directions['a'] = Directions.Left;
-			player_directions['d'] = Directions.Right;
+			PlayerDirections['w'] = Directions.Up;
+			PlayerDirections['s'] = Directions.Down;
+			PlayerDirections['a'] = Directions.Left;
+			PlayerDirections['d'] = Directions.Right;
 
-			player_directions['q'] = Directions.UpLeft;
-			player_directions['e'] = Directions.UpRight;
+			PlayerDirections['q'] = Directions.UpLeft;
+			PlayerDirections['e'] = Directions.UpRight;
 
-			player_directions['y'] = Directions.DownLeft;
-			player_directions['z'] = Directions.DownLeft;
-			player_directions['c'] = Directions.DownRight;
+			PlayerDirections['y'] = Directions.DownLeft;
+			PlayerDirections['z'] = Directions.DownLeft;
+			PlayerDirections['c'] = Directions.DownRight;
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)
 		{
-			GameLoop.Game.Player.Physics_Update();
-			//Player move
-			Directions dir;
-			if (player_directions.TryGetValue(k.Character, out dir))
-			{
-				GameLoop.Game.Player.Walk(dir);
-			}
-
+			//GameLogic stuff here
+			GameLoop.Game.world.Update(k, m);
 		}
 
 		public override void Draw()
