@@ -14,6 +14,7 @@ namespace Adventure
 			List<Position> unload = new List<Position>();
 			SortedList<long, Entitys.Entity> entitys = new SortedList<long,Entitys.Entity>();
 			long sleep_lowest = 1;
+			bool tick_unlocked = true;
 
 			//Update loaded chunks
 			foreach (KeyValuePair<Position, Chunk> kv in LoadedChunks)
@@ -45,15 +46,16 @@ namespace Adventure
 			if (entitys.Count > 0)
 			{
 				sleep_lowest = entitys.Values[0].Sleep;
-				entitys.Values[0].Event_Tick(k, m);
+				tick_unlocked = entitys.Values[0].Event_Tick(k, m);
 			}
-			foreach (KeyValuePair<long, Entitys.Entity> kv in entitys)
+			if (tick_unlocked)
 			{
-				kv.Value.Sleep -= sleep_lowest;
+				foreach (KeyValuePair<long, Entitys.Entity> kv in entitys)
+				{
+					kv.Value.Sleep -= sleep_lowest;
+				}
+				Turns_Total += sleep_lowest;
 			}
-			Turns_Total += sleep_lowest;
-			System.Console.WriteLine(Turns_Total);
-
 		}
 
 		public void SetTile(Position pos, Tile tile)

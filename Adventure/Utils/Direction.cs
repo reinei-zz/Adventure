@@ -4,6 +4,7 @@ namespace Adventure
 {
 	public enum Directions
 	{
+		None,
 		Up,
 		Down,
 		Left,
@@ -20,6 +21,7 @@ namespace Adventure
 	{
 		public static Dictionary<Directions, Position> DirectionPositions = new Dictionary<Directions, Position>()
 			{
+				{ Directions.None, new Position(0, 0, 0)},
 				{ Directions.Up, new Position(0, 0, -1)},
 				{ Directions.Down, new Position(0, 0, 1)},
 				{ Directions.Left, new Position(-1, 0, 0)},

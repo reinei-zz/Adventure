@@ -12,6 +12,9 @@ namespace Adventure.Entitys
 		//Abilitys
 		public bool CanWalk;
 
+		//Attributes
+		public long AtrribSpeed;
+
 		//Protected
 		protected double health;
 		protected long fallcount;
@@ -27,6 +30,8 @@ namespace Adventure.Entitys
 			this.Sleep = 0;
 
 			this.CanWalk = canwalk;
+
+			this.AtrribSpeed = 1;
 
 			this.Resistances = new float[32];
 			this.Blocks = new byte[32];
@@ -59,17 +64,24 @@ namespace Adventure.Entitys
 				{
 					GameLoop.Game.world.MoveEntity(this, this.Pos + Direction.DirectionPositions[dir]);
 					GameLoop.Game.world.Event_Noise(this.Pos, World.NoiseType.Step);
+					this.Sleep += 10 / AtrribSpeed;
 					return true;
 				}
 			}
 			return false;
 		}
 
+		public bool Wait()
+		{
+			this.Sleep += 1;
+			return true;
+		}
+
 		public void Event_Noise(Position pos, double amount)
 		{
 		}
 
-		public void Event_Tick(TCODKey k, TCODMouseData m)
+		public bool Event_Tick(TCODKey k, TCODMouseData m)
 		{
 			if (this == GameLoop.Game.Player)
 			{
@@ -77,14 +89,18 @@ namespace Adventure.Entitys
 				Directions dir;
 				if (Screens.World.PlayerDirections.TryGetValue(k.Character, out dir))
 				{
-					GameLoop.Game.Player.Walk(dir);
+					Walk(dir);
 				}
-				this.Sleep = 1;
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
 				this.Sleep = 10;
 			}
+			return true;
 		}
 
 		public void Physics_Update()

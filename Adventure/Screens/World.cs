@@ -26,6 +26,8 @@ namespace Adventure
 			PlayerDirections['y'] = Directions.DownLeft;
 			PlayerDirections['z'] = Directions.DownLeft;
 			PlayerDirections['c'] = Directions.DownRight;
+
+			PlayerDirections[' '] = Directions.None;
 		}
 
 		public override void Update(TCODKey k, TCODMouseData m)
@@ -81,7 +83,7 @@ namespace Adventure
             GameLoop.Console.putChar(halfw, halfh, 2);
             GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			m.Draw(GameLoop.Game.Player.Pos);
+			m.Draw();
 		}
 	}
 }

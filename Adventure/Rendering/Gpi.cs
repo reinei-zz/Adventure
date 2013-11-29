@@ -11,11 +11,10 @@ namespace Adventure
     public class Menu
     {
 
-		public void Draw(Position playerPos)
+		public void Draw()
 		{
 			int width = GameLoop.Console.getWidth();
 			int height = GameLoop.Console.getHeight();
-			string s = playerPos.ToString();
 
 			GameLoop.Console.rect(0, height - 5, width, 4, true);
 
@@ -52,12 +51,19 @@ namespace Adventure
 				GameLoop.Console.putChar(x, height - 3, (int)TCODSpecialCharacter.DoubleHorzLine);
 			}
 			GameLoop.Console.putChar(width - 1, height - 3, (int)TCODSpecialCharacter.DoubleTeeWest);
+			GameLoop.Console.putChar(width - 15, height - 2, (int)TCODSpecialCharacter.DoubleVertLine);
+			GameLoop.Console.putChar(width - 15, height - 1, (int)TCODSpecialCharacter.DoubleTeeNorth);
 
 
 			//Border finished
 			GameLoop.Console.setForegroundColor(TCODColor.white);
 
-			GameLoop.Console.print(width - s.Length - 1, height - 4, s);
+			string pos = GameLoop.Game.Player.Pos.ToString();
+			string time = GameLoop.Game.world.Turns_Total.ToString();
+			
+			GameLoop.Console.print(width - pos.Length - 1, height - 4, pos);
+			GameLoop.Console.print(width - time.Length - 1, height - 2, time);
+			
 		}
      }
 
